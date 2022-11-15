@@ -86,7 +86,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tvValor"
             android:clickable="true"
             android:focusable="true"/>
-        
+
         <TextView
             android:id="@+id/tvQuantidade"
             android:layout_width="wrap_content"
