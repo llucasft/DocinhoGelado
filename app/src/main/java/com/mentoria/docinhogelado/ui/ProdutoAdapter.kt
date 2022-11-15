@@ -16,12 +16,19 @@ class ProdutoAdapter(
     private val produtos = produtos.toMutableList()
 
     class ViewHolder(private val binding: ProdutoItemBinding): RecyclerView.ViewHolder(binding.root){
-        private val nome = binding.tvNome
-        private val descricao = binding.tvDescricao
-        private val valor = binding.tvValor
-        private val quantidade = binding.tvQuantidade
-        private val aumenta = binding.tvAumenta
-        private val diminui = binding.tvDiminui
+
+        fun vincula(produto: Produto) {
+            val nome = binding.tvNome
+            nome.text = produto.nome
+            val descricao = binding.tvDescricao
+            descricao.text = produto.descricao
+            val valor = binding.tvValor
+            valor.text = produto.valor
+            val quantidade = binding.tvQuantidade
+            quantidade.text = produto.quantidade.toString()
+//            val aumenta = binding.tvAumenta
+//            val diminui = binding.tvDiminui
+        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ProdutoItemBinding.inflate(
@@ -34,6 +41,7 @@ class ProdutoAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val produto = produtos[position]
+        holder.vincula(produto)
     }
 
     override fun getItemCount(): Int = produtos.size
