@@ -72,24 +72,46 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/sorvete" />
 
-        <CheckBox
-            android:id="@+id/cbAdicionar"
+        <TextView
+            android:id="@+id/tvDiminui"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/white"
+            android:text="-"
+            android:textColor="@color/white"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="30sp"
             app:layout_constraintTop_toTopOf="@id/tvValor"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tvValor"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:clickable="true"
+            android:focusable="true"/>
+        
+        <TextView
+            android:id="@+id/tvQuantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/white"
+            android:layout_marginEnd="6dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/tvDiminui"
+            app:layout_constraintTop_toTopOf="@id/tvValor"
+            app:layout_constraintBottom_toBottomOf="@id/tvValor"/>
 
         <TextView
-            android:id="@+id/tvAdicionar"
+            android:id="@+id/tvAumenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adicionar item"
-            android:textColor="@android:color/white"
+            android:text="+"
+            android:textColor="@color/white"
+            android:layout_marginEnd="6dp"
+            android:textSize="22sp"
             app:layout_constraintTop_toTopOf="@id/tvValor"
-            app:layout_constraintEnd_toStartOf="@id/cbAdicionar"
-            app:layout_constraintBottom_toBottomOf="@id/tvValor" />
+            app:layout_constraintEnd_toStartOf="@id/tvQuantidade"
+            app:layout_constraintBottom_toBottomOf="@id/tvValor"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
