@@ -1,4 +1,6 @@
 package com.mentoria.docinhogelado.database.dao
 
-class AdminDao {
+import androidx.room.Dao
+
+interface AdminDao {
 }

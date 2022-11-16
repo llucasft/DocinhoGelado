@@ -21,9 +21,9 @@ import com.mentoria.docinhogelado.model.Usuario
 )
 abstract class AppDataBase : RoomDatabase() {
 
-    abstract fun adminDao(): AdminDao
-    abstract fun produtoDao(): ProdutoDao
-    abstract fun usuarioDao(): UsuarioDao
+//    abstract fun adminDao(): AdminDao
+//    abstract fun produtoDao(): ProdutoDao
+//    abstract fun usuarioDao(): UsuarioDao
 
     companion object {
         @Volatile
