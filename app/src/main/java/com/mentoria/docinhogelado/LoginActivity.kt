@@ -4,15 +4,25 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.mentoria.docinhogelado.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
+    private val binding by lazy {
+        ActivityLoginBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        var botao= findViewById<Button>(R.id.botaoCadastro)
+        setContentView(binding.root)
+        var botao = binding.botaoCadastro
         botao.setOnClickListener {
             val intent=Intent(this,CadastroUsuarioActivity::class.java)
+            startActivity(intent)
+        }
+        var botaoLogin = binding.botaoEntrar
+        botaoLogin.setOnClickListener {
+            val intent = Intent(this,ProdutosActivity::class.java)
             startActivity(intent)
         }
     }

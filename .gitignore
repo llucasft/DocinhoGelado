@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+app/src/main/res/drawable/sorvete.jpg
+
+app/src/main/res/sorvete.jpg
