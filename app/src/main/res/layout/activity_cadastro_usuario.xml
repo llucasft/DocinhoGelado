@@ -21,10 +21,9 @@
         android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
         android:id="@+id/botaoConfirmar"
@@ -35,15 +34,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/cadastroDeUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="7dp"
+        android:layout_marginLeft="7dp"
         android:text="Cadastro de Usuário"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -56,17 +54,19 @@
         android:id="@+id/espacoNomeCompleto"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: André Luiz de Souza Lima...."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
 
     <TextView
         android:id="@+id/nomeCompleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
         android:text="Nome Completo:"
         android:textSize="16sp"
@@ -79,12 +79,12 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="7dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:text="Login:"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoNomeCompleto" />
 
@@ -92,7 +92,8 @@
         android:id="@+id/espacoLogin"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: André Luiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -103,8 +104,8 @@
         android:id="@+id/senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
         android:text="Senha:"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,23 +117,24 @@
         android:id="@+id/espacoSenha"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: Sorvete123"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/senha" />
 
     <TextView
         android:id="@+id/senhaConfirma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:padding="7dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:text="Confirmação da Senha:"
-
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoSenha" />
 
@@ -140,23 +142,24 @@
         android:id="@+id/espacoSenhaConfirma"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:hint="ex: Sorvete123"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/senhaConfirma" />
 
     <TextView
         android:id="@+id/cpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="7dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:text="CPF:"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoSenhaConfirma" />
 
@@ -164,7 +167,8 @@
         android:id="@+id/espacoCpf"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: XXX.XXX.XXX-XX"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -175,11 +179,12 @@
         android:id="@+id/opcaoDeRetirada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="18dp"
         android:text="Opção de retirada:"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoCpf" />
 
@@ -187,9 +192,11 @@
         android:id="@+id/endereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
         android:text="Endereço:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opcaoDeRetirada" />
 
@@ -197,7 +204,8 @@
         android:id="@+id/espacoEndereco"
         android:layout_width="404dp"
         android:layout_height="49dp"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: R. Lagoa Azul"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -209,18 +217,20 @@
         android:id="@+id/numeroEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:text="número:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoEndereco" />
 
     <EditText
         android:id="@+id/espacoEnderecoNumero"
-        android:layout_width="400dp"
+        android:layout_width="150dp"
         android:layout_height="35dp"
-        android:layout_marginTop="12dp"
-        android:autofillHints="name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
         android:hint="ex: 408"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -231,21 +241,23 @@
         android:id="@+id/bairroEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
         android:text="Bairro:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoEnderecoNumero" />
 
     <EditText
         android:id="@+id/espacoBairro"
-        android:layout_width="400dp"
+        android:layout_width="200dp"
         android:layout_height="35dp"
-        android:layout_marginTop="36dp"
-        android:autofillHints="name"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:hint="Jardim das Flores"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bairroEndereco" />
 
@@ -253,19 +265,23 @@
         android:id="@+id/cepEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="CEP---------------------"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:text="CEP:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/espacoBairro" />
 
     <EditText
-        android:layout_width="400dp"
+        android:id="@+id/editText"
+        android:layout_width="200dp"
         android:layout_height="35dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
         android:hint="XXXX-XXX"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cepEndereco" />
 
