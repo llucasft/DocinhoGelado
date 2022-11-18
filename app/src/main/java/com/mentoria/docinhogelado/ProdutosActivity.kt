@@ -1,39 +1,50 @@
 package com.mentoria.docinhogelado
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityProdutosBinding
-import com.mentoria.docinhogelado.model.Produto
+import com.mentoria.docinhogelado.ui.FormularioProdutoActivity
 import com.mentoria.docinhogelado.ui.ProdutoAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProdutosActivity : AppCompatActivity() {
- private lateinit var binding: ActivityProdutosBinding
+    private lateinit var binding: ActivityProdutosBinding
+    private val adapter = ProdutoAdapter(context = this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProdutosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         configuraRecyclerView()
+
+        val fab = binding.fabAdicionarProduto
+
+        fab.setOnClickListener {
+            val intent = Intent(this, FormularioProdutoActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val db = AppDataBase.instancia(this)
+        val produtoDao = db.produtoDao()
+        val scope = MainScope()
+        scope.launch {
+            val produtos = withContext(Dispatchers.IO) {
+                produtoDao.buscaProdutos()
+            }
+            adapter.atualiza(produtos)
+        }
     }
 
     private fun configuraRecyclerView() {
         val recyclerView = binding.recyclerView
-        recyclerView.adapter = ProdutoAdapter(
-            this, produtos = listOf(
-                Produto(
-                    nome = "Romeu e Julieta",
-                    descricao = "Delicioso sorvete para refrescar",
-                    valor = "R$ 8.99",
-                    quantidade = 2
-                ),
-                Produto(
-                    nome = "Sorvete de flocos",
-                    descricao = "Delicioso sorvete para refrescar",
-                    valor = "R$ 5.99",
-                    quantidade = 1
-                )
-            )
-        )
+        recyclerView.adapter = adapter
     }
 }
