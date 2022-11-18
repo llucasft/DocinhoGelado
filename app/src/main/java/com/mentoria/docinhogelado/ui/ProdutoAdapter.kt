@@ -10,7 +10,7 @@ import com.mentoria.docinhogelado.model.Produto
 
 class ProdutoAdapter(
     private val context: Context,
-    produtos: List<Produto>
+    produtos: List<Produto> = emptyList()
 ):RecyclerView.Adapter<ProdutoAdapter.ViewHolder>() {
 
     private val produtos = produtos.toMutableList()
@@ -24,8 +24,6 @@ class ProdutoAdapter(
             descricao.text = produto.descricao
             val valor = binding.tvValor
             valor.text = produto.valor
-            val quantidade = binding.tvQuantidade
-            quantidade.text = produto.quantidade.toString()
 //            val aumenta = binding.tvAumenta
 //            val diminui = binding.tvDiminui
         }
@@ -45,4 +43,10 @@ class ProdutoAdapter(
     }
 
     override fun getItemCount(): Int = produtos.size
+
+    fun atualiza(produtos: List<Produto>) {
+        this.produtos.clear()
+        this.produtos.addAll(produtos)
+        notifyDataSetChanged()
+    }
 }
