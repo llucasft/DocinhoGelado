@@ -15,12 +15,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        var botao = binding.botaoCadastro
+        val botao = binding.botaoCadastro
         botao.setOnClickListener {
             val intent=Intent(this,CadastroUsuarioActivity::class.java)
             startActivity(intent)
         }
-        var botaoLogin = binding.botaoEntrar
+        val botaoLogin = binding.botaoEntrar
         botaoLogin.setOnClickListener {
             val intent = Intent(this,ProdutosActivity::class.java)
             startActivity(intent)
