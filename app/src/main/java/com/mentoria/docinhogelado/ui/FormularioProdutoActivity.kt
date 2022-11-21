@@ -3,9 +3,11 @@ package com.mentoria.docinhogelado.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import coil.load
 import com.mentoria.docinhogelado.R
 import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityFormularioProdutoBinding
+import com.mentoria.docinhogelado.databinding.DialogImagemLayoutBinding
 import com.mentoria.docinhogelado.model.Produto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,10 +38,17 @@ class FormularioProdutoActivity : AppCompatActivity() {
         }
 
         binding.imagemFormulario.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setView(R.layout.dialog_imagem_layout)
-                .setPositiveButton("Confirmar"){_, _ ->
+            val bindingFormularioImagem = DialogImagemLayoutBinding.inflate(layoutInflater)
+            bindingFormularioImagem.formularioDialogBotaoCarregar.setOnClickListener {
+                val url = bindingFormularioImagem.formularioDialogImagemEtURL.text.toString()
+                bindingFormularioImagem.formularioDialogImagem.load(url)
+            }
 
+            AlertDialog.Builder(this)
+                .setView(bindingFormularioImagem.root)
+                .setPositiveButton("Confirmar"){_, _ ->
+                    val url = bindingFormularioImagem.formularioDialogImagemEtURL.text.toString()
+                    binding.imagemFormulario.load(url)
                 }
                 .setNegativeButton("Cancelar"){_, _ ->
 
