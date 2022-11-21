@@ -2,6 +2,8 @@ package com.mentoria.docinhogelado.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
+import com.mentoria.docinhogelado.R
 import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityFormularioProdutoBinding
 import com.mentoria.docinhogelado.model.Produto
@@ -23,7 +25,6 @@ class FormularioProdutoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         title = "Cadastrar novo produto"
-
         val btnSalvar = binding.button
 
         btnSalvar.setOnClickListener {
@@ -32,6 +33,18 @@ class FormularioProdutoActivity : AppCompatActivity() {
                 produtoDao.salva(novoProduto)
                 finish()
             }
+        }
+
+        binding.imagemFormulario.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setView(R.layout.dialog_imagem_layout)
+                .setPositiveButton("Confirmar"){_, _ ->
+
+                }
+                .setNegativeButton("Cancelar"){_, _ ->
+
+                }
+                .show()
         }
     }
 
