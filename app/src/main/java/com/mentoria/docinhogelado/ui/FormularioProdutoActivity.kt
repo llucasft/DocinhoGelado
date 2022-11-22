@@ -22,6 +22,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         AppDataBase.instancia(this).produtoDao()
     }
     private val scope = CoroutineScope(Dispatchers.IO)
+    private var url: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         binding.imagemFormulario.setOnClickListener {
             val bindingFormularioImagem = DialogImagemLayoutBinding.inflate(layoutInflater)
             bindingFormularioImagem.formularioDialogBotaoCarregar.setOnClickListener {
-                val url = bindingFormularioImagem.formularioDialogImagemEtURL.text.toString()
+                url = bindingFormularioImagem.formularioDialogImagemEtURL.text.toString()
                 bindingFormularioImagem.formularioDialogImagem.load(url)
             }
 
@@ -68,7 +69,8 @@ class FormularioProdutoActivity : AppCompatActivity() {
         return Produto(
             nome = nome,
             descricao = descricao,
-            valor = valor
+            valor = valor,
+            imagem = url
         )
     }
 }

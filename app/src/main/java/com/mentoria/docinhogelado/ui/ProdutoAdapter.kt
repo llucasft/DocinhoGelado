@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import coil.load
 import com.mentoria.docinhogelado.databinding.ProdutoItemBinding
 import com.mentoria.docinhogelado.model.Produto
 
@@ -24,6 +25,8 @@ class ProdutoAdapter(
             descricao.text = produto.descricao
             val valor = binding.tvValor
             valor.text = produto.valor
+            val imagem = binding.imageView
+            imagem.load(produto.imagem)
 //            val aumenta = binding.tvAumenta
 //            val diminui = binding.tvDiminui
         }
