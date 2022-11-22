@@ -21,9 +21,10 @@
         android:text="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/espacoCepEndereco"
+        app:layout_constraintVertical_bias="0.354" />
 
     <Button
         android:id="@+id/botaoConfirmar"
@@ -32,9 +33,10 @@
         android:text="Confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/espacoCepEndereco"
+        app:layout_constraintVertical_bias="0.36" />
 
     <TextView
         android:id="@+id/cadastroDeUsuario"
@@ -50,18 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/espacoNomeCompleto"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="8dp"
-        android:hint="ex: André Luiz de Souza Lima...."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
-
     <TextView
         android:id="@+id/nomeCompleto"
         android:layout_width="wrap_content"
@@ -74,6 +64,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cadastroDeUsuario" />
+
+    <EditText
+        android:id="@+id/espacoNomeCompleto"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="8dp"
+        android:hint="ex: André Luiz de Souza Lima...."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/nomeCompleto" />
+
+
 
     <TextView
         android:id="@+id/login"
@@ -274,7 +278,7 @@
         app:layout_constraintTop_toBottomOf="@+id/espacoBairro" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/espacoCepEndereco"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
