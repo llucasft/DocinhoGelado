@@ -23,6 +23,9 @@ class ProdutosActivity : AppCompatActivity() {
         configuraRecyclerView()
 
         val fab = binding.fabAdicionarProduto
+        val totalPedidoTv = binding.fabValorTotal
+        val totalPedidoValor = adapter.valorTotalPedido
+        totalPedidoTv.text = "Valor total do pedido R$$totalPedidoValor"
 
         fab.setOnClickListener {
             val intent = Intent(this, FormularioProdutoActivity::class.java)
