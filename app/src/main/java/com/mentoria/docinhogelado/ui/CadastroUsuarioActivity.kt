@@ -1,4 +1,4 @@
-package com.mentoria.docinhogelado
+package com.mentoria.docinhogelado.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

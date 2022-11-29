@@ -1,12 +1,10 @@
-package com.mentoria.docinhogelado
+package com.mentoria.docinhogelado.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityProdutosBinding
-import com.mentoria.docinhogelado.ui.FormularioProdutoActivity
-import com.mentoria.docinhogelado.ui.ProdutoAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
