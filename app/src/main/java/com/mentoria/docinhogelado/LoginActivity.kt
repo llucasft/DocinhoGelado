@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val botao = binding.botaoCadastro
+        supportActionBar?.hide()
         botao.setOnClickListener {
             val intent = Intent(this@LoginActivity, CadastroUsuarioActivity::class.java)
             startActivity(intent)
