@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityProdutosBinding
+import com.mentoria.docinhogelado.model.Pedido
 import com.mentoria.docinhogelado.model.Produto
+import com.mentoria.docinhogelado.preferences.dataStore
+import com.mentoria.docinhogelado.preferences.usuarioLogadoPreferences
 import com.mentoria.docinhogelado.util.ProdutoClickListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -17,17 +22,31 @@ import kotlinx.coroutines.withContext
 class ProdutosActivity : AppCompatActivity(), ProdutoClickListener {
     private lateinit var binding: ActivityProdutosBinding
     private val adapter = ProdutoAdapter(context = this, this@ProdutosActivity)
+    private lateinit var fabTotalValor: ExtendedFloatingActionButton
+    var totalPedido: Double = 0.0
+    private lateinit var pedido: Pedido
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProdutosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val db = AppDataBase.instancia(this)
+        val usuarioDao = db.usuarioDao()
+
         configuraRecyclerView()
 
+        lifecycleScope.launch {
+            dataStore.data.collect{ preferences ->
+                preferences[usuarioLogadoPreferences]?.let { usuarioLogin ->
+                    usuarioDao.buscaPorLogin(usuarioLogin).collect{
+                        Log.i("ProdutosActivity", "onCreate: $it")
+                    }
+                }
+            }
+        }
+
         val fab = binding.fabAdicionarProduto
-        val totalPedidoTv = binding.fabValorTotal
-        val totalPedidoValor = adapter.valorTotalPedido
-        totalPedidoTv.text = "Valor total do pedido R$$totalPedidoValor"
+        fabTotalValor = binding.fabValorTotal
 
         fab.setOnClickListener {
             val intent = Intent(this, FormularioProdutoActivity::class.java)
@@ -55,6 +74,8 @@ class ProdutosActivity : AppCompatActivity(), ProdutoClickListener {
 
     override fun aumenta(produto: Produto, position: Int) {
         produto.quantidade += 1
+        totalPedido = produto.quantidade * produto.valor.toDouble()
+        fabTotalValor.text = "Total do pedido: R$$totalPedido"
         adapter.notifyItemChanged(position)
     }
 
@@ -67,6 +88,8 @@ class ProdutosActivity : AppCompatActivity(), ProdutoClickListener {
                 "Quantidade não pode ser menor que 0!",
                 Toast.LENGTH_SHORT
             ).show()
+        totalPedido = produto.quantidade * produto.valor.toDouble()
+        fabTotalValor.text = "Total do pedido: R$$totalPedido"
         adapter.notifyItemChanged(position)
     }
 }

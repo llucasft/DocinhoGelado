@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.mentoria.docinhogelado.model.Usuario
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UsuarioDao {
@@ -18,5 +19,5 @@ interface UsuarioDao {
     suspend fun autentica(login: String, senha: String): Usuario?
 
     @Query("SELECT * FROM Usuario WHERE login = :login")
-    suspend fun buscaPorLogin(login: String): Usuario?
+    fun buscaPorLogin(login: String): Flow<Usuario>
 }

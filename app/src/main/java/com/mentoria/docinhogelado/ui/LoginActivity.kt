@@ -4,9 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import com.mentoria.docinhogelado.database.AppDataBase
 import com.mentoria.docinhogelado.databinding.ActivityLoginBinding
+import com.mentoria.docinhogelado.preferences.dataStore
+import com.mentoria.docinhogelado.preferences.usuarioLogadoPreferences
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -37,7 +41,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun verificaDados(usuarioLogin: String, usuarioSenha: String) {
         lifecycleScope.launch {
-            usuarioDao.autentica(usuarioLogin, usuarioSenha)?.let {
+            usuarioDao.autentica(usuarioLogin, usuarioSenha)?.let { usuario ->
+                dataStore.edit { preferences ->
+                    preferences[usuarioLogadoPreferences] = usuario.login
+                }
                 val intent = Intent(this@LoginActivity, ProdutosActivity::class.java)
                 startActivity(intent)
                 finish()
