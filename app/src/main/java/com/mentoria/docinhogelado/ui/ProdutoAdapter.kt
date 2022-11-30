@@ -9,10 +9,12 @@ import coil.load
 import com.mentoria.docinhogelado.R
 import com.mentoria.docinhogelado.databinding.ProdutoItemBinding
 import com.mentoria.docinhogelado.model.Produto
+import com.mentoria.docinhogelado.util.ProdutoClickListener
 
 class ProdutoAdapter(
     private val context: Context,
-    produtos: List<Produto> = emptyList()
+    private val itemClickListener: ProdutoClickListener,
+    produtos: List<Produto> = emptyList(),
 ) : RecyclerView.Adapter<ProdutoAdapter.ViewHolder>() {
 
     var valorTotalPedido = ""
@@ -20,6 +22,10 @@ class ProdutoAdapter(
 
     class ViewHolder(private val binding: ProdutoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        val tvAumenta = binding.tvAumenta
+        val tvDiminui = binding.tvDiminui
+        val tvQuantidade = binding.tvQuantidade
 
         fun vincula(produto: Produto) {
             val nome = binding.tvNome
@@ -30,6 +36,7 @@ class ProdutoAdapter(
             valor.text = produto.valor
             val imagem = binding.imageView
             imagem.load(produto.imagem)
+            tvQuantidade.text = produto.quantidade.toString()
         }
     }
 
@@ -45,23 +52,13 @@ class ProdutoAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val produto = produtos[position]
         holder.vincula(produto)
-        var quantidadeValue = 0
-        val tvQuantidade = holder.itemView.findViewById<TextView>(R.id.tvQuantidade)
-        val tvAumenta = holder.itemView.findViewById<TextView>(R.id.tvAumenta)
-        val tvDiminui = holder.itemView.findViewById<TextView>(R.id.tvDiminui)
 
-        tvAumenta.setOnClickListener {
-            quantidadeValue++
-            if (quantidadeValue > 0)
-                tvQuantidade.text = quantidadeValue.toString()
-            valorTotalPedido = modificaValorPedido(quantidadeValue.toString(), produto.valor)
+        holder.tvAumenta.setOnClickListener {
+            itemClickListener.aumenta(produtos[position], position)
         }
 
-        tvDiminui.setOnClickListener {
-            quantidadeValue--
-            if (quantidadeValue > 0)
-                tvQuantidade.text = quantidadeValue.toString()
-            valorTotalPedido = modificaValorPedido(quantidadeValue.toString(), produto.valor)
+        holder.tvDiminui.setOnClickListener {
+            itemClickListener.diminui(produtos[position], position)
         }
     }
 
@@ -71,12 +68,5 @@ class ProdutoAdapter(
         this.produtos.clear()
         this.produtos.addAll(produtos)
         notifyDataSetChanged()
-    }
-
-    fun modificaValorPedido(quantidade: String, produtoValor: String): String {
-        val quantidadeInt = quantidade.toInt()
-        val valorFloat = produtoValor.toFloat()
-        val valorTotal = quantidadeInt * valorFloat
-        return valorTotal.toString()
     }
 }
