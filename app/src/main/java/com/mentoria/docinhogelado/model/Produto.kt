@@ -13,5 +13,6 @@ data class Produto(
     var nome: String,
     var descricao: String,
     var valor: String,
-    var imagem: String? = null
+    var imagem: String? = null,
+    var quantidade: Int = 0
 ) : Parcelable
